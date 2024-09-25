@@ -4,7 +4,7 @@ the code to handle HTTP requests using a framework like Flask. This will allow
 you to deploy it as a serverless function in faasd.'''
 
 
-import boto3
+#import boto3
 import time
 import os
 import random
