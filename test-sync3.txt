@@ -1,0 +1,6 @@
+test push from host to remote after syncing from vm to host
+
+flow:
+create this new file (made some changes in the vm)
+sync to host machine
+push from host to remote repo to see if there is any issue
