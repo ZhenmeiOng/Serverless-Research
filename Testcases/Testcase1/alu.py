@@ -1,6 +1,5 @@
 ## the handler.py file for alu
 
-import boto3
 import time
 import os
 import random
@@ -9,7 +8,7 @@ from multiprocessing import Process, Pipe
 defaultLoopTime = 10000000
 defaultParallelIndex = 100
 
-def lambda_handler(event, context):
+def handler(event, context):
     startTime = GetTime()
     if 'execTime' in event:
         execTime_prev = event['execTime']
