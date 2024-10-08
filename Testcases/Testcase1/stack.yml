@@ -1,0 +1,22 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  alu:
+    lang: python
+    handler: ./alu.py
+    image: zhenmei/alu:latest
+    requirements: ./alu_requirements.txt
+  keyDownloader:
+    lang: python
+    handler: ./keyDownloader.py
+    image: zhenmei/keyDownloader:latest
+    requirements: ./keyDownloader_requirements.txt
+  together:
+    lang: python
+    handler: ./together.py
+    image: zhenmei/together:latest
+    requirements: ./together_requirements.txt
+
