@@ -5,18 +5,18 @@ provider:
 
 functions:
   alu:
-    lang: python
-    handler: ./alu.py
+    lang: python3
+    handler: ./alu
     image: zhenmei/alu:latest
-    requirements: ./alu_requirements.txt
+    requirements: ./alu/alu_requirements.txt
   keyDownloader:
-    lang: python
-    handler: ./keyDownloader.py
-    image: zhenmei/keyDownloader:latest
-    requirements: ./keyDownloader_requirements.txt
+    lang: python3
+    handler: ./keydownloader
+    image: zhenmei/keydownloader:latest
+    requirements: ./keydownloader/keydownloader_requirements.txt
   together:
-    lang: python
-    handler: ./together.py
+    lang: python3
+    handler: ./together
     image: zhenmei/together:latest
-    requirements: ./together_requirements.txt
+    requirements: ./together/together_requirements.txt
 

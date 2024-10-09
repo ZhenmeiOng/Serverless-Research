@@ -32,6 +32,7 @@ def handler(event, context):
         "loopTime": loopTime,
         "key": key
     }
+    print (result1)
     return alu_handler(result1,"")
 
 def extractLoopTime(file_path):

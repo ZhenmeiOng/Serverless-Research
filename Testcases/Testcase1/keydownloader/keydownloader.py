@@ -15,13 +15,15 @@ def handler(event, context):
     loopTime = extractLoopTime(key)
 
     retTime = GetTime()
-    return {
+    result = {
         "startTime": startTime,
         "retTime": retTime,
         "execTime": retTime - startTime,
         "loopTime": loopTime,
         "key": key
     }
+    print (result)
+    return result
 
 def extractLoopTime(file_path):
     try:
