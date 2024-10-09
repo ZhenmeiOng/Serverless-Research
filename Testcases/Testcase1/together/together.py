@@ -16,7 +16,7 @@ defaultLoopTime = 10000000
 defaultParallelIndex = 100
 
 def handler(event, context):
-    startTime = GetTime()
+    '''startTime = GetTime()
     if 'key' in event:
         key = event['key']
     else:
@@ -33,7 +33,8 @@ def handler(event, context):
         "key": key
     }
     result_final = alu_handler(result1,"")
-    print (result_final)
+    print (result_final)'''
+    result_final = "hello world"
     return result_final
 
 def extractLoopTime(file_path):

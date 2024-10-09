@@ -1,0 +1,11 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  together:
+    lang: python3
+    handler: ./together
+    image: zhenmei/together:latest
+    requirements: ./together/together_requirements.txt
