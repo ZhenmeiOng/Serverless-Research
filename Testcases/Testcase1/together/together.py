@@ -32,8 +32,9 @@ def handler(event, context):
         "loopTime": loopTime,
         "key": key
     }
-    print (result1)
-    return alu_handler(result1,"")
+    result_final = alu_handler(result1,"")
+    print (result_final)
+    return result_final
 
 def extractLoopTime(file_path):
     try:
@@ -59,6 +60,7 @@ def alu_handler(event, context):
     temp = alu(loopTime, parallelIndex)
     retTime = GetTime()
     return {
+        "loopTime": loopTime,
         "startTime": startTime,
         "retTime": retTime,
         "execTime": retTime - startTime,
@@ -107,3 +109,10 @@ def alu(times, parallelIndex):
 
 def GetTime():
     return int(round(time.time() * 1000))
+
+# for running locally in vm
+if __name__ == "__main__":
+    # Simulate a function call like OpenFaaS would make
+    result = handler("", None)
+    #print("Function output:")
+    #print(result)

@@ -22,7 +22,6 @@ def handler(event, context):
         "loopTime": loopTime,
         "key": key
     }
-    print (result)
     return result
 
 def extractLoopTime(file_path):

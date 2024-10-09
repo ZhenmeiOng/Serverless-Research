@@ -21,13 +21,15 @@ def handler(event, context):
     parallelIndex = defaultParallelIndex
     temp = alu(loopTime, parallelIndex)
     retTime = GetTime()
-    return {
+    final_result = {
         "startTime": startTime,
         "retTime": retTime,
         "execTime": retTime - startTime,
         "result": temp,
         'execTime_prev': execTime_prev
     }
+    print (final_result)
+    return final_result
 
 def doAlu(times, childConn, clientId):
     a = random.randint(10, 100)
