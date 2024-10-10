@@ -1,14 +1,51 @@
-## the handler.py file for alu
+# together.py
+'''def handle(req):
+    #print ("hello")
+    print("hello2")
+
+    return req'''
 
 import time
 import os
 import random
 from multiprocessing import Process, Pipe
 
+defaultKey = "loopTime.txt"
 defaultLoopTime = 10000000
 defaultParallelIndex = 100
 
-def handler(event, context):
+def handle(event, context=None):
+    startTime = GetTime()
+    if 'key' in event:
+        key = event['key']
+    else:
+        key = defaultKey
+
+    loopTime = extractLoopTime(key)  # key is the file path?
+
+    retTime = GetTime()
+    result1 = {
+        "startTime": startTime,
+        "retTime": retTime,
+        "execTime": retTime - startTime,
+        "loopTime": loopTime,
+        "key": key
+    }
+    result_final = alu_handler(result1,"")
+    #print (result_final)
+    return result_final
+
+def extractLoopTime(file_path):
+    try:
+        with open(file_path, 'r') as f:
+            loopTime = int(f.readline().strip())
+            print("loopTime: " + str(loopTime))
+            return loopTime
+    except Exception as e:
+        print(f"Error reading loop time from file: {e}")
+        return defaultLoopTime
+
+def alu_handler(event, context=None):
     startTime = GetTime()
     if 'execTime' in event:
         execTime_prev = event['execTime']
@@ -21,15 +58,14 @@ def handler(event, context):
     parallelIndex = defaultParallelIndex
     temp = alu(loopTime, parallelIndex)
     retTime = GetTime()
-    final_result = {
+    return {
+        "loopTime": loopTime,
         "startTime": startTime,
         "retTime": retTime,
         "execTime": retTime - startTime,
         "result": temp,
         'execTime_prev': execTime_prev
     }
-    print (final_result)
-    return final_result
 
 def doAlu(times, childConn, clientId):
     a = random.randint(10, 100)
@@ -44,7 +80,7 @@ def doAlu(times, childConn, clientId):
             temp = a * b
         else:
             temp = a / b
-    print(times)
+    #print(times)
     childConn.send(temp)
     childConn.close()
     return temp
@@ -72,3 +108,10 @@ def alu(times, parallelIndex):
 
 def GetTime():
     return int(round(time.time() * 1000))
+
+# for running locally in vm
+if __name__ == "__main__":
+    # Simulate a function call like OpenFaaS would make
+    result = handler("", None)
+    #print("Function output:")
+    #print(result)

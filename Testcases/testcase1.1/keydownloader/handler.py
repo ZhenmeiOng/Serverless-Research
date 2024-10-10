@@ -1,11 +1,11 @@
-## handler.py for keyDownloader
+## keyDownloader
 
 import time
 import os
 
 defaultKey = "loopTime.txt"
 
-def handler(event, context):
+def handle(event, context = None):
     startTime = GetTime()
     if 'key' in event:
         key = event['key']
