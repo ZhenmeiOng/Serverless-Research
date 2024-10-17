@@ -60,7 +60,7 @@ def singleAlu(payload, resultTexts, botoClient, clientId):
         Payload = payload,
     )'''
      # Perform an HTTP POST request to the OpenFaaS function
-    response = requests.post(AluFunctionUrl, data=payload)
+    response = requests.post(AluFunctionArn, data=payload)
 
     clientEndTime = GetTime()
     clientExecTime = clientEndTime - clientStartTime
