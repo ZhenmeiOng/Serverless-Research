@@ -6,5 +6,5 @@ functions:
   do-alu:
     lang: python3
     handler: ./do-alu
-    image: zhennmei/do-alu:latest
+    image: zhenmei/do-alu:latest
 
