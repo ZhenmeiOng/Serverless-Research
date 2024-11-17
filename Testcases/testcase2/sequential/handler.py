@@ -1,8 +1,10 @@
 import random
 import time
+import json
 
-def sequential_handler(event, context):
+def handle(event):
     startTime = GetTime()
+    event = json.loads(event)
     if 'n' in event:
         times = event['n']
         temp = alu(times)

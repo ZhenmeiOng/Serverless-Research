@@ -1,0 +1,11 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.64.27:8080
+functions:
+  callee:
+    lang: python3
+    handler: ./callee
+    image: zhenmei/callee:latest
+    requirements: ./requirements.txt
+

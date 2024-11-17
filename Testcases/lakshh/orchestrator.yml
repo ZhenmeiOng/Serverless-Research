@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.64.27:8080
+functions:
+  orchestrator:
+    lang: python3
+    handler: ./orchestrator
+    image: zhenmei/orchestrator:latest
+

@@ -8,4 +8,9 @@ functions:
     handler: ./together
     image: zhenmei/together:latest
     requirements: ./requirements.txt
+    environment: 
+      LOOP_TIME_FILE: ./loopTime.txt
+    limits:
+      memory: 100Mi
+
 

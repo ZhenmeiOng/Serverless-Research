@@ -1,0 +1,10 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://192.168.64.27:8080
+functions:
+  do-alu1:
+    lang: python3
+    handler: ./do-alu1
+    image: zhenmei/do-alu1:latest
+

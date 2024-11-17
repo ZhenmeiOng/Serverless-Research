@@ -8,3 +8,8 @@ functions:
     handler: ./keydownloader
     image: zhenmei/keydownloader:latest
     requirements: ./requirements.txt
+    limits:
+      memory: 100Mi
+      ## memory: 500Mi
+      ## memory: 1000Mi
+      ## memory: 3000Mi

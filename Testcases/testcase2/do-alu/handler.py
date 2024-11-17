@@ -1,20 +1,24 @@
 import random
 import time
+import json
 
 def handle(event):
     startTime = GetTime()
+    
+    event = json.loads(event)
+
     if 'n' in event:
         times = event['n']
         temp = alu(times)
-        return{
+        return json.dumps({
             'result': temp,
             'times': times,
-            'execTime': GetTime() - startTime
-        }
+            'execTime': GetTime() - startTime,
+        })
     else:
-        return{
+        return json.dumps({
             'error': "No n in event"
-        }
+        })
     
 
 
@@ -34,5 +38,5 @@ def alu(times):
             temp = a * b
         else:
             temp = a / b
-    print(times)
+    # print(times)  # this caused error, so if you want to print, add files=sys.stderr
     return temp
